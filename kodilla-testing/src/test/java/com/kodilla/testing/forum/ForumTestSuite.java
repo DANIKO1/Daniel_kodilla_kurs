@@ -24,10 +24,8 @@ class ForumTestSuite {
         System.out.println("Test Suite: end");
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 23d2221cc464349cfcb1d9ccc9f1da6a143ae077
+
     @DisplayName("when create SimpleUser with realName, " +
             "then getRealName should return real user name"
     )
