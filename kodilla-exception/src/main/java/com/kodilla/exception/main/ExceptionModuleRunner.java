@@ -1,11 +1,17 @@
 package com.kodilla.exception.main;
 
 import com.kodilla.exception.io.FileReader;
-import java.io.UnsupportedEncodingException;
+import com.kodilla.exception.io.FileReaderException;
+
 public class ExceptionModuleRunner {
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) {
         FileReader fileReader = new FileReader();
-        fileReader.readFile();
+
+        try {
+            fileReader.readFile("nie_ma_takiego_pliku.txt");
+        } catch (FileReaderException e) {
+            System.out.println("Problem while reading a file!");
+        }
     }
 }
