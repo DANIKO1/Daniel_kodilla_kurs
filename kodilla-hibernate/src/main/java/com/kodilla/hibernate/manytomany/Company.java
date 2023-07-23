@@ -2,26 +2,18 @@ package com.kodilla.hibernate.manytomany;
 
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedNativeQuery(name = "Company.retrieveCompanyNameLike",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :NAME , '%')")
 
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
-
     private int id;
     private String name;
     private List<Employee> employees = new ArrayList<>();
-
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    private void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
 
     public Company() {
     }
@@ -44,11 +36,20 @@ public class Company {
         return name;
     }
 
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
     private void setId(int id) {
         this.id = id;
     }
 
     private void setName(String name) {
         this.name = name;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }
