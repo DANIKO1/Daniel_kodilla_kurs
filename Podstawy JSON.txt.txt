@@ -1,0 +1,6 @@
+{
+  "name of car": "Astra",
+  "make of car": "Opel",
+  "armchairs": ["material", "colour"],
+  "engine capacity": 1990
+}
